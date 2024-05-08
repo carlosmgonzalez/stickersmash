@@ -3,10 +3,13 @@ import React from "react";
 
 interface Props {
   placeholderImage: ImageSourcePropType | undefined;
+  selectedImage?: string;
 }
 
-export const ImageViewer = ({ placeholderImage }: Props) => {
-  return <Image source={placeholderImage} style={styles.image} />;
+export const ImageViewer = ({ placeholderImage, selectedImage }: Props) => {
+  const imageSource = selectedImage ? { uri: selectedImage } : placeholderImage;
+
+  return <Image source={imageSource} style={styles.image} />;
 };
 
 const styles = StyleSheet.create({
